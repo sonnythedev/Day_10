@@ -1,0 +1,67 @@
+/*
+ <div id="container" class="container">
+
+          <div id="outputArea">
+              <div id="textHolder" class="textHolder"></div>
+              <div id="imageHolder" class="imageHolder"></div>
+          </div>
+
+          <div id="controlPanel" class="controlPanel">
+                <div id="colorPicker" class="colorPicker">
+
+*/
+.container{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:1rem;
+}
+
+.container .outputArea{
+   width:90%;
+   min-height:20rem;
+   margin:0 auto;
+   margin-bottom:1rem;
+   padding:5%;
+   border:1px solid red;
+}
+
+.container .outputArea .textHolder{
+    width:70%;
+    margin:0 auto;
+    font-family:fantasy;
+    font-size:2rem;
+    color:green;
+   
+}
+.container .outputArea .imageHolder{
+    width:70%;
+    margin:0 auto;
+ }
+
+ .container .outputArea .imageHolder img{
+     width:15rem;
+ }
+
+ .container .outputArea .imageHolder #imgDiv{
+    position: absolute;
+ }
+ .container .outputArea .imageHolder .transDiv{
+     position: absolute;
+     z-index:5;
+     width:15rem;
+     height:15rem;
+     
+ }
+
+.container .controlPanel{
+    background-color:#CCCCCC;
+    line-height:1.5rem;
+    width:90%;
+    margin:0 auto;
+    padding:5%;
+    border:1px solid blue;
+}
+
+.container .controlPanel .txt{
+    width:50%;
+}
+

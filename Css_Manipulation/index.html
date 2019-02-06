@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>CSS Manipulation Project</title>
+   <link rel="stylesheet" type="text/css" href="styles.css">
+   <script src="css_manipulation.js"></script>
+   <script>
+        function changeBGColor(val,type){
+            if(type=='R'){
+                document.querySelector('#spanBGR').innerText=val;
+            }
+            else if(type=='G'){
+                document.querySelector('#spanBGG').innerText=val;
+            }
+            else if(type=='B'){
+                document.querySelector('#spanBGB').innerText=val;
+            }
+
+            let rVal=document.querySelector('#rValBG').value;
+            let gVal=document.querySelector('#gValBG').value;
+            let bVal=document.querySelector('#bValBG').value;
+
+            //document.querySelector('#outputArea').style.backgroundColor='rgb('+rVal+','+gVal+','+bVal+')';
+
+            document.querySelector('#outputArea').style.backgroundColor=`rgb(${rVal},${gVal},${bVal})`;
+        }
+
+        function changeTransColor(val,type){
+            if(type=='R'){
+                document.querySelector('#spanTransR').innerText=val;
+            }
+            else if(type=='G'){
+                document.querySelector('#spanTransR').innerText=val;
+            }
+            else if(type=='B'){
+                document.querySelector('#spanTransB').innerText=val;
+            }
+
+            let rVal=document.querySelector('#rValTrans').value;
+            let gVal=document.querySelector('#gValTrans').value;
+            let bVal=document.querySelector('#bValTrans').value;
+
+            console.log(rVal,gVal,bVal);
+
+            document.getElementById('transDiv').style.height=document.getElementById('img_1').height+'px'
+           ;
+
+            document.querySelector('#transDiv').style.backgroundColor='rgb('+rVal+','+gVal+','+bVal+')';
+            
+            //document.querySelector('#imgDiv').style.backgroundColor='rgb('+rVal+','+gVal+','+bVal+')';
+
+            //document.querySelector('#outputArea').style.backgroundColor=`rgb(${rVal},${gVal},${bVal})`;
+        }
+
+        function changeTransLevel(val){
+           //console.log(val);
+           console.log(document.getElementById('img_1').height);
+           document.getElementById('transDiv').style.height=document.getElementById('img_1').height+'px'
+           ;
+           document.getElementById('transDiv').style.opacity=val;
+        }
+
+        function changeTxt(val){
+            console.log(val);
+            document.getElementById('textHolder').innerText=val;
+        }
+        function changePic(){
+            //console.log(val);
+            console.log(document.getElementById('file_1').files[0]);
+            document.getElementById('img_1').src=document.getElementById('file_1').files[0].name;
+        }
+     </script>
+ </head>
+ <body>
+     <div id="container" class="container">
+
+          <div id="outputArea" class="outputArea">
+              <div id="textHolder" class="textHolder">Place Holder text...</div>
+              <div id="imageHolder" class="imageHolder">
+                  <div id="imgDiv"><img src="placeholder.png" id="img_1" class="img"/></div>
+                  <div id="transDiv" class="transDiv">&nbsp;&nbsp;</div>
+              </div>
+          </div>
+
+          <div id="controlPanel" class="controlPanel">
+                <div id="colorPicker" class="colorPicker">
+                    Please Enter RGB colors for the background area<br/>
+                    R(Red): <input type="range" min="0" max="255" step="1" id="rValBG" onchange="changeBGColor(this.value,'R')"/> <span id="spanBGR"></span> <br/>
+
+                    G(Green): <input type="range" min="0" max="255" step="1" id="gValBG" onchange="changeBGColor(this.value,'G')"/><span id="spanBGG"></span><br/>
+
+                    Blue(Blue): <input type="range" min="0" max="255" step="1" id="bValBG" onchange="changeBGColor(this.value,'B')"/><span id="spanBGB"></span><br/>
+                </div>
+                <hr/>
+                <div id="imagePicker" class="imagePicker">
+                 Upload Image From Your Computer :
+                 <input type="file" id="file_1" name="file_1" onchange="changePic()"/>
+                </div>
+                <hr/>
+                <div id="textPicker" class="textPicker">
+                    Enter Text Here:
+                    <input type="text" id="text_1" class="txt" onkeyup="changeTxt(this.value)"/>
+                </div>
+                <hr/>
+                <!--This part is for changing the transparency of top div-->
+
+                <div id="transparencyPicker" class="tranparencyPicker">
+                    <!--Following will let us pick color for the transparent div-->
+                    Please Enter RGB colors for the transparency of the image<br/>
+                    R(Red): <input type="range" min="0" max="255" step="1" id="rValTrans" onchange="changeTransColor(this.value,'R')"/> <span id="spanTransR"></span> <br/>
+
+                    G(Green): <input type="range" min="0" max="255" step="1" id="gValTrans" onchange="changeTransColor(this.value,'G')"/><span id="spanTransG"></span><br/>
+                        
+                    Blue(Blue): <input type="range" min="0" max="255" step="1" id="bValTrans" onchange="changeTransColor(this.value,'B')"/><span id="spanTransB"></span><br/>
+
+                    <!--Following will let us choose the transparency level of the div-->
+
+                    Enter transparency value(0 to 1): <input type="range" min="0" max="1" step=".1" id="transVal" onchange="changeTransLevel(this.value)"/><span id="spanB"></span><br/>
+
+                </div>
+
+          </div>
+          
+    </div>
+
+     
+ </body>
+</html>
